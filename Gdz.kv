@@ -1,0 +1,79 @@
+#:import Factory kivy.factory.Factory
+<Mypop>
+   on_open:root.opened()
+   bl:left
+   br:right
+   sync:images
+   auto_dismiss:False
+   title:"гдз по англискому"
+   BoxLayout:
+      orientation:"vertical"
+      Button:
+        
+         text:"закрыть"
+         size_hint:0.1,0.05
+         pos_hint:{"x":0.9,"top":1}
+         on_press: root.dismiss()
+      
+      BoxLayout:
+         Button:
+            text:"<"
+            id:left
+            size_hint:0.05,0.05
+            on_press:
+               root.leftcl()
+         AsyncImage:
+            id:images
+         
+         Button:
+            id:right
+            text:">"
+            size_hint:0.05,0.05
+            on_press:
+               root.rightcl()
+      
+
+<Container>:
+   
+   button_id:bb1
+   txt1:t
+  
+   
+   AnchorLayout:
+      size: root.width,root.height 
+      
+      BoxLayout:
+         orientation:"vertical"
+         padding:30
+         spacing:10
+
+
+         Label:
+            text:"Гдз по англискому языку, \n ведите страницу"
+            font_size:30
+            size_hint:1,0.5
+            bold:True
+            
+            
+         TextInput:
+            multiline: False
+            font_size:12
+            size_hint:1,0.1
+            id:t
+         Button:
+            text:"получить результат"
+            size_hint:0.2,0.2
+            pos_hint:{"center_x":0.5,"y":1}
+            background_color: .2, .31, 100, 1
+            background_normal:""
+            id:bb1
+            on_press:
+               root.clicked()
+               Factory.Mypop().open()
+         
+            
+         AsyncImage:
+            id:img1
+            source:"https://gorobzor.ru/content/news/2019/07/gotovye_domashnie_zadaniya_besplatno_bez_registracii_image_5d2b68091fb191.16072212.jpeg"
+            
+            
